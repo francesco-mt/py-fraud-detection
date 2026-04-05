@@ -8,7 +8,7 @@
 
 ## 🎯 Objective
 
-Build a binary classifier to detect fraudulent credit card transactions in real time, with explainable predictions suitable for compliance reporting.
+Build a binary classifier to detect fraudulent credit card transactions, with explainable predictions suitable for compliance reporting.
 
 ---
 
@@ -73,7 +73,7 @@ cd app && streamlit run app.py
 | **Preprocessing** | StandardScaler on Amount & Time; stratified train/test split |
 | **Imbalance handling** | SMOTE applied to training set only |
 | **Models** | Logistic Regression (baseline) → Random Forest → XGBoost |
-| **Evaluation** | AUC-ROC, Precision, Recall, F1 — *not* accuracy |
+| **Evaluation** | AUC-ROC, Precision, Recall, F1 |
 | **Explainability** | SHAP TreeExplainer — global + per-transaction explanations |
 | **Threshold tuning** | Precision/Recall/F1 curve to select business-optimal cutoff |
 
@@ -92,24 +92,16 @@ cd app && streamlit run app.py
 ## 💡 Key Design Decisions
 
 **Why not use accuracy?**  
-With only 0.17% fraud, a model predicting "always legitimate" achieves 99.83% accuracy — yet catches zero fraud. AUC-ROC, Precision, and Recall are the correct metrics.
+With only 0.17% fraud, a model predicting "always legitimate" achieves 99.83% accuracy — yet catches zero fraud. AUC-ROC, Precision, and Recall meet the project's needs better.
 
 **Why SHAP?**  
-Malta's MFSA-regulated fintechs are subject to AML compliance obligations. Risk and compliance teams need to understand *why* a transaction was flagged, not just that it was. SHAP provides this audit trail.
+To show why a transaction was flagged, according to AML compliance obligations Malta's MFSA-regulated fintechs are subject to.
 
 **Why threshold tuning?**  
-The default 0.5 threshold optimises neither business goal. A fraud team with limited review capacity may prefer higher precision; a high-risk environment may prefer higher recall. This project demonstrates that tradeoff explicitly.
+To accomodate for various business goals.
 
 ---
 
-## 🔮 Production Roadmap
-
-- [ ] Wrap model in a FastAPI endpoint for real-time scoring
-- [ ] Add model drift monitoring (e.g. Evidently AI)
-- [ ] Retrain pipeline on a monthly schedule
-- [ ] Connect to a transaction database for live dashboarding
-
----
 
 ## 📋 Regulatory Context
 
@@ -118,7 +110,3 @@ This project is designed with Malta's regulatory landscape in mind:
 - **MFSA** (Malta Financial Services Authority) — enforces AML/CFT obligations for licensed payment institutions
 - **FIAU** (Financial Intelligence Analysis Unit) — requires suspicious transaction reporting
 - **PSD2** — mandates strong customer authentication and fraud monitoring for payment processors
-
----
-
-*Portfolio project by [Your Name] | [LinkedIn] | [GitHub]*
