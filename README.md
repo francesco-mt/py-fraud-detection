@@ -1,4 +1,4 @@
-# 💳 Credit Card Fraud Detection
+#  Credit Card Fraud Detection
 ### Fintech ML Portfolio Project — Data Analyst | Malta
 
 > Built to demonstrate ML skills relevant to MFSA-regulated fintech companies in Malta.  
@@ -6,13 +6,13 @@
 
 ---
 
-## 🎯 Objective
+##  Objective
 
 Build a binary classifier to detect fraudulent credit card transactions, with explainable predictions suitable for compliance reporting.
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 fraud_detection/
@@ -34,7 +34,7 @@ fraud_detection/
 
 ---
 
-## 📊 Dataset
+##  Dataset
 
 **Source:** [Kaggle — Credit Card Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
 
@@ -50,45 +50,46 @@ fraud_detection/
 
 ---
 
-## 🛠️ Setup
+##  Setup
 
-####Prerequisites
+#### Prerequisites
 
 Python 3.8+ — python.org
 pip — comes bundled with Python
 Jupyter Notebook or JupyterLab — to run the analysis notebook
 A Kaggle account (free) — to download the dataset
 
-####1. Clone the Repository
+#### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/francesco-mt/py-fraud-detection.git
 cd py-fraud-detection
 ```
 
-####2. Install Dependencies
+#### 2. Install Dependencies
 
 ```bash
 pip install requirements.txt
 ```
 
-####3. Download the dataset
+#### 3. Download the dataset
 use the link provided at the top of the notebook and save the file creditcard.csv in the 'data' folder
 
-####4. Run the notebook
+#### 4. Run the notebook
 
 ```bash
 jupyter notebook notebooks/fraud_detection.ipynb
 ```
 
-####5. Run the Streamlit app 
+#### 5. Run the Streamlit app
+
 ```bash
 cd app && streamlit run app.py
 ```
 
 ---
 
-## 🧠 ML Pipeline
+##  Machine Learning Pipeline
 
 | Step | Detail |
 |------|--------|
@@ -102,7 +103,7 @@ cd app && streamlit run app.py
 
 ---
 
-## 📈 Results
+##  Results
 
 | Model | AUC-ROC |
 |-------|---------|
@@ -112,7 +113,7 @@ cd app && streamlit run app.py
 
 ---
 
-## 💡 Key Design Decisions
+##  Key Design Decisions
 
 **Why not use accuracy?**  
 With only 0.17% fraud, a model predicting "always legitimate" achieves 99.83% accuracy — yet catches zero fraud. AUC-ROC, Precision, and Recall meet the project's needs better.
@@ -126,7 +127,7 @@ To accomodate for various business goals.
 ---
 
 
-## 📋 Regulatory Context
+##  Regulatory Context
 
 This project is designed with Malta's regulatory landscape in mind:
 
