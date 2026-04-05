@@ -52,14 +52,37 @@ fraud_detection/
 
 ## 🛠️ Setup
 
+####Prerequisites
+
+Python 3.8+ — python.org
+pip — comes bundled with Python
+Jupyter Notebook or JupyterLab — to run the analysis notebook
+A Kaggle account (free) — to download the dataset
+
+####1. Clone the Repository
+
 ```bash
-# Clone or download this project, then:
-pip install pandas numpy matplotlib seaborn scikit-learn xgboost imbalanced-learn shap streamlit joblib jupyter
+git clone https://github.com/francesco-mt/py-fraud-detection.git
+cd py-fraud-detection
+```
 
-# Run the notebook
+####2. Install Dependencies
+
+```bash
+pip install requirements.txt
+```
+
+####3. Download the dataset
+use the link provided at the top of the notebook and save the file creditcard.csv in the 'data' folder
+
+####4. Run the notebook
+
+```bash
 jupyter notebook notebooks/fraud_detection.ipynb
+```
 
-# Run the Streamlit app (after training the model)
+####5. Run the Streamlit app 
+```bash
 cd app && streamlit run app.py
 ```
 
