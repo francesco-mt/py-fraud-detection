@@ -1,5 +1,5 @@
 #  Credit Card Fraud Detection
-### Fintech ML Portfolio Project — Data Analyst | Malta
+### Fintech ML Portfolio Project — Data Analyst 
 
 > Built to demonstrate ML skills relevant to MFSA-regulated fintech companies in Malta.  
 > Aligned with AML monitoring requirements and compliance-ready explainability.
