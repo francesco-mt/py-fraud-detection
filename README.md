@@ -66,10 +66,12 @@ git clone https://github.com/francesco-mt/py-fraud-detection.git
 cd py-fraud-detection
 ```
 
-#### 2. Install Dependencies
+#### 2. Create Virtual Environment and Install Dependencies
 
 ```bash
-pip install requirements.txt
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
 ```
 
 #### 3. Download the dataset
