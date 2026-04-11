@@ -100,24 +100,30 @@ st.subheader("🎲 Load a Sample Transaction")
 if df is not None:
     col_a, col_b, col_c = st.columns(3)
 
+    def _apply_tx(values: dict, label):
+        """Write transaction values into both current_tx and each widget's key."""
+        st.session_state.current_tx = values
+        st.session_state.tx_label   = label
+        st.session_state['inp_amount'] = values['Amount']
+        st.session_state['inp_time']   = values['Time']
+        for i in range(1, 29):
+            st.session_state[f'v{i}'] = values[f'V{i}']
+
     with col_a:
         if st.button("🚨 Load Random FRAUD Transaction", use_container_width=True):
             fraud_df = df[df['Class'] == 1]
             row = fraud_df.iloc[np.random.randint(0, len(fraud_df))]
-            st.session_state.current_tx = {col: float(row[col]) for col in FEATURE_COLS}
-            st.session_state.tx_label = "fraud"
+            _apply_tx({col: float(row[col]) for col in FEATURE_COLS}, "fraud")
 
     with col_b:
         if st.button("✅ Load Random LEGITIMATE Transaction", use_container_width=True):
             legit_df = df[df['Class'] == 0]
             row = legit_df.iloc[np.random.randint(0, len(legit_df))]
-            st.session_state.current_tx = {col: float(row[col]) for col in FEATURE_COLS}
-            st.session_state.tx_label = "legit"
+            _apply_tx({col: float(row[col]) for col in FEATURE_COLS}, "legit")
 
     with col_c:
         if st.button("🔄 Reset to Zeros", use_container_width=True):
-            st.session_state.current_tx = {col: 0.0 for col in FEATURE_COLS}
-            st.session_state.tx_label   = None
+            _apply_tx({col: 0.0 for col in FEATURE_COLS}, None)
 
     if st.session_state.tx_label == "fraud":
         st.info("🚨 A known **fraudulent** transaction has been loaded. See if the model catches it!")
@@ -136,8 +142,8 @@ tx = st.session_state.current_tx
 
 col1, col2, col3 = st.columns(3)
 with col1:
-    amount = st.number_input("Amount (€)",  value=tx['Amount'], format="%.4f")
-    time   = st.number_input("Time (secs)", value=tx['Time'],   format="%.4f")
+    amount = st.number_input("Amount (€)",  value=tx['Amount'], format="%.4f", key="inp_amount")
+    time   = st.number_input("Time (secs)", value=tx['Time'],   format="%.4f", key="inp_time")
 
 with col2:
     st.markdown("**PCA Features V1–V14**")
